@@ -1,0 +1,39 @@
+#mainContainter {
+    margin: auto;
+    text-align: center;
+    border: solid;
+    width: 250px;
+    height: 300px;
+}
+
+#display {
+    margin: auto;
+    border: solid;
+    width: 212px;
+    height: 50px;
+}
+
+button {
+    margin: auto;
+    width: 50px;
+    height: 50px;
+}
+
+#buttons {
+    width: 250px;
+}
+
+#numbers {
+    position: relative;
+    left: -30px;
+    top: 15px;
+}
+
+#operators {
+    width: 50px;
+    height: 200px;
+    position: relative;
+    top: -200px;
+    right: -190px;
+    display: block;
+}
