@@ -6,15 +6,24 @@ html {
     background-size: cover;
   }
 
-#mainContainter {
+h1 {
+    position: relative;
+    top: 50px;
+    color: lightgoldenrodyellow;
+    font-size: 90px;
+    text-shadow: 5px 5px black;
+}
+
+#mainContainer {
     margin: auto;
     position: relative;
     background-color: lightgoldenrodyellow;
-    top: 100px;
+    bottom: 150px;
     left: 500px;
     text-align: center;
     border: solid;
     border-color: orange;
+    border-width: 10px;
     border-radius: 25px;
     width: 450px;
     height: 600px;
@@ -24,25 +33,40 @@ html {
     margin: auto;
     border: solid;
     border-radius: 25px;
+    border-width: 4px;
     border-color: orange;
+    background-color: lightgrey;
     position: relative;
     top: 25px;
     width: 400px;
     height: 100px;
 }
 
-#display h1 {
+#display h2 {
     position: relative;
-    bottom: 15px;
+    bottom: 10px;
+    font-size: 46px;
 }
+
 button {
     margin: auto;
-    width: 50px;
-    height: 50px;
+    margin-top: 25px;
+    margin-left: 25px;
+    position: relative;
+    background-color: lightgoldenrodyellow;
+    border-color: orange;
+    border-width: 4px;
+    top: 25px;
+    left: 25px;
+    border-radius: 37.5px;
+    width: 75px;
+    height: 75px;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 #buttons {
-    width: 250px;
+    width: 350px;
 }
 
 #numbers {
@@ -55,12 +79,12 @@ button {
     width: 50px;
     height: 200px;
     position: relative;
-    top: -185px;
-    right: -190px;
+    bottom: 380px;
+    left: 310px;
     display: block;
 }
 
 .operators {
-    height: 40px;
-    width: 40px;
+    height: 53px;
+    width: 53px;
 }
