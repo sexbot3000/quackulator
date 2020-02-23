@@ -1,18 +1,40 @@
+html { 
+    background: url(images.jpeg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
 #mainContainter {
     margin: auto;
+    position: relative;
+    background-color: lightgoldenrodyellow;
+    top: 100px;
+    left: 500px;
     text-align: center;
     border: solid;
-    width: 250px;
-    height: 300px;
+    border-color: orange;
+    border-radius: 25px;
+    width: 450px;
+    height: 600px;
 }
 
 #display {
     margin: auto;
     border: solid;
-    width: 212px;
-    height: 50px;
+    border-radius: 25px;
+    border-color: orange;
+    position: relative;
+    top: 25px;
+    width: 400px;
+    height: 100px;
 }
 
+#display h1 {
+    position: relative;
+    bottom: 15px;
+}
 button {
     margin: auto;
     width: 50px;
@@ -33,7 +55,12 @@ button {
     width: 50px;
     height: 200px;
     position: relative;
-    top: -200px;
+    top: -185px;
     right: -190px;
     display: block;
+}
+
+.operators {
+    height: 40px;
+    width: 40px;
 }
