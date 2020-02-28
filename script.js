@@ -27,9 +27,16 @@ function operate(operator, a, b) {
 
 // functions for showing display
 function display(number) {
-    displayValue += number;
-    if (displayValue == '0') {
-        displayValue = '';
+    if (displayValue.length >= 11) {
+        let displayValueArray = displayValue.split('');
+        displayValueArray.pop();
+        displayValue = displayValueArray.join('');
+        console.log(displayValueArray);
+    } else if (displayValue == '0') {
+        displayValue = number;
+        showValue(displayValue);
+    } else {
+        displayValue += number;
     }
 }
 
@@ -56,6 +63,13 @@ function pressOperator(newOperator) {
     }
 }
 
+function fullClear() {
+    displayValue = '';
+    storedValue = 0;
+    solution = 0;
+    showValue(displayValue);
+}
+
 let displayValue = '';
 let storedValue = 0;
 let savedOperator = '';
@@ -80,3 +94,4 @@ document.getElementById('equals').addEventListener("click", function () {let sol
                                                                         storedValue = solution;
                                                                         showValue(solution)
                                                                         displayValue = '';});
+document.getElementById('clear').addEventListener("click", function() {fullClear()});
