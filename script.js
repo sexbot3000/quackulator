@@ -18,10 +18,10 @@ function divide(a, b) {
 
 function operate(operator, a, b) {
     switch (operator) {
-    case add : return add(a, b);
-    case subtract : return subtract(a, b);
-    case multiply : return multiply(a, b);
-    case divide : return divide(a, b);
+    case 'add' : return add(a, b);
+    case 'subtract' : return subtract(a, b);
+    case 'multiply' : return multiply(a, b);
+    case 'divide' : return divide(a, b);
     }
 }
 
@@ -30,24 +30,53 @@ function display(number) {
     displayValue += number;
     if (displayValue == '0') {
         displayValue = '';
-    showValue(displayValue);
     }
 }
 
-function showValue() {
-    document.getElementById('showValue').textContent = displayValue;
+function showValue(showMe) {
+    document.getElementById('showValue').textContent = showMe;
 }
 
-// functions for button press
-const One = document.getElementById('1').addEventListener("click", function () {showValue(display('1'))});
-const Two = document.getElementById('2').addEventListener("click", function () {showValue(display('2'))});
-const Three = document.getElementById('3').addEventListener("click", function() {showValue(display('3'))});
-const Four = document.getElementById('4').addEventListener("click", function () {showValue(display('4'))});
-const Five = document.getElementById('5').addEventListener("click", function () {showValue(display('5'))});
-const Six = document.getElementById('6').addEventListener("click", function () {showValue(display('6'))});
-const Seven = document.getElementById('7').addEventListener("click", function () {showValue(display('7'))});
-const Eight = document.getElementById('8').addEventListener("click", function () {showValue(display('8'))});
-const Nine = document.getElementById('9').addEventListener("click", function () {showValue(display('9'))});
-const Zero = document.getElementById('0').addEventListener("click", function () {showValue(display('0'))});
+function updateDisplay(updateNumber) {
+    display(updateNumber);
+    showValue(displayValue);
+}
+
+function pressOperator(newOperator) {
+    if (storedValue == 0) {
+        storedValue = Number(displayValue);
+        displayValue = '';
+        savedOperator = newOperator;
+    } else {
+        let tempSolution = Number(operate(savedOperator, storedValue, Number(displayValue)));
+        storedValue = tempSolution;
+        showValue(tempSolution);
+        displayValue = '';
+        savedOperator = newOperator;
+    }
+}
 
 let displayValue = '';
+let storedValue = 0;
+let savedOperator = '';
+
+// functions for button press
+document.getElementById('1').addEventListener("click", function () {updateDisplay('1')});
+document.getElementById('2').addEventListener("click", function () {updateDisplay('2')});
+document.getElementById('3').addEventListener("click", function () {updateDisplay('3')});
+document.getElementById('4').addEventListener("click", function () {updateDisplay('4')});
+document.getElementById('5').addEventListener("click", function () {updateDisplay('5')});
+document.getElementById('6').addEventListener("click", function () {updateDisplay('6')});
+document.getElementById('7').addEventListener("click", function () {updateDisplay('7')});
+document.getElementById('8').addEventListener("click", function () {updateDisplay('8')});
+document.getElementById('9').addEventListener("click", function () {updateDisplay('9')});
+document.getElementById('0').addEventListener("click", function () {updateDisplay('0')});
+
+document.getElementById('add').addEventListener("click", function () {pressOperator('add')});
+document.getElementById('subtract').addEventListener("click", function () {pressOperator('subtract')});
+document.getElementById('multiply').addEventListener("click", function () {pressOperator('multiply')});
+document.getElementById('divide').addEventListener("click", function () {pressOperator('divide')});
+document.getElementById('equals').addEventListener("click", function () {let solution = Number(operate(savedOperator, storedValue, Number(displayValue)));
+                                                                        storedValue = solution;
+                                                                        showValue(solution)
+                                                                        displayValue = '';});
