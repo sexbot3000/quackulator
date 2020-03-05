@@ -31,7 +31,6 @@ function display(number) {
         let displayValueArray = displayValue.split('');
         displayValueArray.pop();
         displayValue = displayValueArray.join('');
-        console.log(displayValueArray);
     } else if (displayValue == '0') {
         displayValue = number;
         showValue(displayValue);
@@ -53,6 +52,8 @@ function pressOperator(newOperator) {
     if (storedValue == 0) {
         storedValue = Number(displayValue);
         displayValue = '';
+        savedOperator = newOperator;
+    } else if (displayValue == '') {
         savedOperator = newOperator;
     } else {
         let tempSolution = Number(operate(savedOperator, storedValue, Number(displayValue)));
@@ -93,5 +94,6 @@ document.getElementById('divide').addEventListener("click", function () {pressOp
 document.getElementById('equals').addEventListener("click", function () {let solution = Number(operate(savedOperator, storedValue, Number(displayValue)));
                                                                         storedValue = solution;
                                                                         showValue(solution)
+                                                                        savedOperator = '';
                                                                         displayValue = '';});
 document.getElementById('clear').addEventListener("click", function() {fullClear()});
