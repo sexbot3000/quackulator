@@ -1,5 +1,4 @@
 // functions for operators
-
 function add(a, b) {
     return a + b;
 }
@@ -27,9 +26,10 @@ function operate(operator, a, b) {
 
 // functions for showing display
 function display(number) {
-    if (displayValue.length >= 11) {
+    if (displayValue.length >= 12) {
         let displayValueArray = displayValue.split('');
         displayValueArray.pop();
+        displayValueArray.push(number);
         displayValue = displayValueArray.join('');
     } else if (displayValue == '0') {
         displayValue = number;
@@ -41,6 +41,18 @@ function display(number) {
 
 function showValue(showMe) {
     document.getElementById('showValue').textContent = showMe;
+}
+
+function validateSolution(solNumb) {
+    let solutionLength = solNumb.toString().length;
+    if (solutionLength > 12) {
+        if ((solNumb % 1) != 0) {
+            solNumb = solNumb.toPrecision(11);
+        } else {
+            solNumb = solNumb.toPrecision(8);
+        }
+    return solNumb
+    }
 }
 
 function updateDisplay(updateNumber) {
@@ -57,6 +69,7 @@ function pressOperator(newOperator) {
         savedOperator = newOperator;
     } else {
         let tempSolution = Number(operate(savedOperator, storedValue, Number(displayValue)));
+        tempSolution = validateSolution(tempSolution)
         storedValue = tempSolution;
         showValue(tempSolution);
         displayValue = '';
@@ -92,6 +105,7 @@ document.getElementById('subtract').addEventListener("click", function () {press
 document.getElementById('multiply').addEventListener("click", function () {pressOperator('multiply')});
 document.getElementById('divide').addEventListener("click", function () {pressOperator('divide')});
 document.getElementById('equals').addEventListener("click", function () {let solution = Number(operate(savedOperator, storedValue, Number(displayValue)));
+                                                                        solution = validateSolution(solution)
                                                                         storedValue = solution;
                                                                         showValue(solution)
                                                                         savedOperator = '';
