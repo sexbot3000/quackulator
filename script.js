@@ -51,8 +51,10 @@ function validateSolution(solNumb) {
         } else {
             solNumb = solNumb.toPrecision(8);
         }
-    return solNumb
+    } else {
+        return solNumb;
     }
+    return solNumb;
 }
 
 function updateDisplay(updateNumber) {
@@ -68,10 +70,9 @@ function pressOperator(newOperator) {
     } else if (displayValue == '') {
         savedOperator = newOperator;
     } else {
-        let tempSolution = Number(operate(savedOperator, storedValue, Number(displayValue)));
-        tempSolution = validateSolution(tempSolution)
+        let tempSolution = Number(operate(savedOperator, storedValue, Number(displayValue)));        
         storedValue = tempSolution;
-        showValue(tempSolution);
+        showValue(validateSolution(tempSolution));
         displayValue = '';
         savedOperator = newOperator;
     }
@@ -104,10 +105,12 @@ document.getElementById('add').addEventListener("click", function () {pressOpera
 document.getElementById('subtract').addEventListener("click", function () {pressOperator('subtract')});
 document.getElementById('multiply').addEventListener("click", function () {pressOperator('multiply')});
 document.getElementById('divide').addEventListener("click", function () {pressOperator('divide')});
-document.getElementById('equals').addEventListener("click", function () {let solution = Number(operate(savedOperator, storedValue, Number(displayValue)));
-                                                                        solution = validateSolution(solution)
+document.getElementById('equals').addEventListener("click", function () {let solution = Number(operate(savedOperator, storedValue, Number(displayValue)));                                                                        
                                                                         storedValue = solution;
-                                                                        showValue(solution)
+                                                                        console.log(storedValue)
+                                                                        console.log(displayValue)                                                                      
+                                                                        showValue(validateSolution(solution))
                                                                         savedOperator = '';
-                                                                        displayValue = '';});
+                                                                        displayValue = '';})
+                                                                        console.log(storedValue);
 document.getElementById('clear').addEventListener("click", function() {fullClear()});
