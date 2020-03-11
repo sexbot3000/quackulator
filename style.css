@@ -46,6 +46,7 @@ h1 {
     position: relative;
     bottom: 10px;
     font-size: 46px;
+    text-align: right;
 }
 
 button {
