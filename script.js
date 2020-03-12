@@ -47,9 +47,9 @@ function validateSolution(solNumb) {
     let solutionLength = solNumb.toString().length;
     if (solutionLength > 12) {
         if ((solNumb % 1) != 0) {
-            solNumb = solNumb.toPrecision(11);
+            solNumb = solNumb.toPrecision(10);
         } else {
-            solNumb = solNumb.toPrecision(8);
+            solNumb = solNumb.toPrecision(7);
         }
     } else {
         return solNumb;
@@ -85,9 +85,25 @@ function fullClear() {
     showValue(displayValue);
 }
 
+function pressEquals() {
+    if (savedOperator == '' || displayValue == '') {
+        console.log('no operator/displayValue');
+    } else if (savedOperator == 'divide' && displayValue == '0') {
+        fullClear();
+        showValue('QUACKFINITY');
+        quack.play();
+    } else {
+        let solution = Number(operate(savedOperator, storedValue, Number(displayValue)));                                                                        
+        storedValue = solution;                                                                    
+        showValue(validateSolution(solution));
+        savedOperator = '';
+        displayValue = '';}
+}
+
 let displayValue = '';
 let storedValue = 0;
 let savedOperator = '';
+let quack = new Audio('quack.mp3');
 
 // functions for button press
 document.getElementById('1').addEventListener("click", function () {updateDisplay('1')});
@@ -105,12 +121,5 @@ document.getElementById('add').addEventListener("click", function () {pressOpera
 document.getElementById('subtract').addEventListener("click", function () {pressOperator('subtract')});
 document.getElementById('multiply').addEventListener("click", function () {pressOperator('multiply')});
 document.getElementById('divide').addEventListener("click", function () {pressOperator('divide')});
-document.getElementById('equals').addEventListener("click", function () {let solution = Number(operate(savedOperator, storedValue, Number(displayValue)));                                                                        
-                                                                        storedValue = solution;
-                                                                        console.log(storedValue)
-                                                                        console.log(displayValue)                                                                      
-                                                                        showValue(validateSolution(solution))
-                                                                        savedOperator = '';
-                                                                        displayValue = '';})
-                                                                        console.log(storedValue);
+document.getElementById('equals').addEventListener("click", function () {pressEquals()});
 document.getElementById('clear').addEventListener("click", function() {fullClear()});
