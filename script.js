@@ -31,6 +31,14 @@ function display(number) {
         displayValueArray.pop();
         displayValueArray.push(number);
         displayValue = displayValueArray.join('');
+    } else if (displayValue.match(/\./) && number == '.') {
+        console.log('too many decimals');
+    } else if (displayValue == '' && number == '.') {
+        displayValue = '0.';
+        showValue(displayValue);        
+    } else if (displayValue == '0' && number == '.') {
+        displayValue = '0.';
+        showValue(displayValue);
     } else if (displayValue == '0') {
         displayValue = number;
         showValue(displayValue);
@@ -123,3 +131,4 @@ document.getElementById('multiply').addEventListener("click", function () {press
 document.getElementById('divide').addEventListener("click", function () {pressOperator('divide')});
 document.getElementById('equals').addEventListener("click", function () {pressEquals()});
 document.getElementById('clear').addEventListener("click", function() {fullClear()});
+document.getElementById('decimal').addEventListener("click", function() {updateDisplay('.')});
