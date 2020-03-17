@@ -47,19 +47,20 @@ h1 {
     bottom: 10px;
     font-size: 46px;
     text-align: right;
+
 }
 
 button {
     margin: auto;
     margin-top: 25px;
-    margin-left: 25px;
+    margin-left: 15px;
     position: relative;
     background-color: lightgoldenrodyellow;
     border-color: orange;
     border-width: 4px;
     top: 25px;
-    left: 25px;
-    border-radius: 37.5px;
+    left: 15px;
+    border-radius: 25px;
     width: 75px;
     height: 75px;
     font-size: 30px;
@@ -77,15 +78,16 @@ button {
 }
 
 #operators {
-    width: 50px;
+    width: 150px;
     height: 200px;
     position: relative;
     bottom: 380px;
-    left: 310px;
-    display: block;
+    left: 280px;
+    line-height: 100px;
 }
 
 .operators {
-    height: 53px;
+    height: 102px;
     width: 53px;
+    border-radius: 12px;
 }

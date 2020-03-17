@@ -1,4 +1,4 @@
-// functions for operators
+// functions for operations
 function add(a, b) {
     return a + b;
 }
@@ -27,12 +27,10 @@ function operate(operator, a, b) {
 // functions for showing display
 function display(number) {
     if (displayValue.length >= 12) {
-        let displayValueArray = displayValue.split('');
-        displayValueArray.pop();
-        displayValueArray.push(number);
-        displayValue = displayValueArray.join('');
+        backspace();
+        displayValue += number;
     } else if (displayValue.match(/\./) && number == '.') {
-        console.log('too many decimals');
+        number == ''
     } else if (displayValue == '' && number == '.') {
         displayValue = '0.';
         showValue(displayValue);        
@@ -70,6 +68,8 @@ function updateDisplay(updateNumber) {
     showValue(displayValue);
 }
 
+//functions for operators
+
 function pressOperator(newOperator) {
     if (storedValue == 0) {
         storedValue = Number(displayValue);
@@ -98,7 +98,7 @@ function pressEquals() {
         console.log('no operator/displayValue');
     } else if (savedOperator == 'divide' && displayValue == '0') {
         fullClear();
-        showValue('QUACKFINITY');
+        showValue('QUACK QUACK');
         quack.play();
     } else {
         let solution = Number(operate(savedOperator, storedValue, Number(displayValue)));                                                                        
@@ -106,6 +106,13 @@ function pressEquals() {
         showValue(validateSolution(solution));
         savedOperator = '';
         displayValue = '';}
+}
+
+function backspace() {
+    let displayValueArray = displayValue.split('');
+        displayValueArray.pop();
+        displayValue = displayValueArray.join('');
+    showValue(displayValue)
 }
 
 let displayValue = '';
@@ -132,3 +139,4 @@ document.getElementById('divide').addEventListener("click", function () {pressOp
 document.getElementById('equals').addEventListener("click", function () {pressEquals()});
 document.getElementById('clear').addEventListener("click", function() {fullClear()});
 document.getElementById('decimal').addEventListener("click", function() {updateDisplay('.')});
+document.getElementById('backspace').addEventListener("click", function() {backspace()});
