@@ -130,7 +130,8 @@ document.getElementById('6').addEventListener("click", function () {updateDispla
 document.getElementById('7').addEventListener("click", function () {updateDisplay('7')});
 document.getElementById('8').addEventListener("click", function () {updateDisplay('8')});
 document.getElementById('9').addEventListener("click", function () {updateDisplay('9')});
-document.getElementById('0').addEventListener("click", function () {updateDisplay('0')});
+document.getElementById('zero').addEventListener("click", function () {updateDisplay('0')});
+document.getElementById('decimal').addEventListener("click", function() {updateDisplay('.')});
 
 document.getElementById('add').addEventListener("click", function () {pressOperator('add')});
 document.getElementById('subtract').addEventListener("click", function () {pressOperator('subtract')});
@@ -138,5 +139,25 @@ document.getElementById('multiply').addEventListener("click", function () {press
 document.getElementById('divide').addEventListener("click", function () {pressOperator('divide')});
 document.getElementById('equals').addEventListener("click", function () {pressEquals()});
 document.getElementById('clear').addEventListener("click", function() {fullClear()});
-document.getElementById('decimal').addEventListener("click", function() {updateDisplay('.')});
 document.getElementById('backspace').addEventListener("click", function() {backspace()});
+
+// functions for keyboard support
+document.addEventListener('keydown', function(e) {
+    if (isFinite(e.key)) {
+        updateDisplay(e.key);
+    } else if (e.key === '.') {
+        updateDisplay('.');
+    } else if (e.key === '+') {
+        pressOperator('add');
+    } else if (e.key === '-') {
+        pressOperator('subtract');
+    } else if (e.key === '*') {
+        pressOperator('multiply');
+    } else if (e.key === '/') {
+        pressOperator('divide');
+    } else if (e.key === 'Backspace') {
+        backspace()
+    } else if (e.key ==='Enter') {
+        pressEquals()
+    }
+})
